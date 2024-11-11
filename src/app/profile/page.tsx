@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
+import MarginedContent from "@/components/ui/margined-content";
 import { getSession, logout } from "@/server/auth";
 import testServerFunction from "@/server/function/test";
 import { Metadata, ServerRuntime } from "next";
-import { redirect } from "next/navigation";
+import { redirect, RedirectType } from "next/navigation";
 
 export const runtime: ServerRuntime = 'edge';
 
@@ -13,10 +14,10 @@ export const metadata: Metadata = {
 export default async function ProfilePage() {
     const greeting = await testServerFunction({ props: { firstName: "Kazuma", honarific: "kun" } });
     const { user } = await getSession();
-    if (!user) redirect('/sign-in');
+    if (!user) redirect('/sign-in', RedirectType.replace);
 
     return (
-        <div>
+        <MarginedContent>
             <p>Profile Page</p>
             <p>{greeting}</p>
 
@@ -28,11 +29,11 @@ export default async function ProfilePage() {
                 action={async () => {
                     "use server";
                     await logout();
-                    redirect("/sign-in");
+                    redirect("/sign-in", RedirectType.replace);
                 }}
             >
                 <Button type="submit">Logout</Button>
             </form>
-        </div>
+        </MarginedContent>
     );
 }

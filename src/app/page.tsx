@@ -1,5 +1,4 @@
-import TestComponent from "@/components/test";
-import { ThemeToggle } from "@/components/theme-toggle";
+import MarginedContent from "@/components/ui/margined-content";
 import { getSession } from "@/server/auth";
 import { Metadata, ServerRuntime } from "next";
 import Link from "next/link";
@@ -14,10 +13,10 @@ export default async function HomePage() {
   const { user } = await getSession();
 
   return (
-    <div>
-      <ThemeToggle />
+    <MarginedContent>
       <p>Hello, World!</p>
       <div className="flex gap-x-2">
+
         {user ? (
           <Link className="text-blue-600" href={'/profile'}>Profile</Link>
         ) : (
@@ -28,7 +27,6 @@ export default async function HomePage() {
           </>
         )}
       </div>
-      <TestComponent />
-    </div>
+    </MarginedContent>
   );
 }
