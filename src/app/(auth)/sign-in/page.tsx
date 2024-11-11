@@ -47,7 +47,7 @@ export default async function SignInPage(props: { searchParams: Promise<{ error:
             </form>
 
             <span className="flex flex-row gap-x-1 w-full justify-center items-center mt-4">
-                <p>Don't have an account?</p>
+                <p>Don&apos;t have an account?</p>
                 <Link href={'/sign-up'} className="text-blue-600 transition-all duration-300 hover:opacity-90">Sign up</Link>
             </span>
         </MarginedContent>
