@@ -2,9 +2,9 @@
 
 interface CloudflareEnv {
 	cache: KVNamespace;
-	SUPABASE_URL: "https://dwhsdoajmvhyezgpeacs.supabase.co";
-	SUPABASE_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR3aHNkb2FqbXZoeWV6Z3BlYWNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjkyNDQ0MzMsImV4cCI6MjA0NDgyMDQzM30.FSXPWiL9B10xpf76_g7jYu2cyD8kJ_JWN3T2Jp9aADY";
-	NEXT_PUBLIC_SUPABASE_URL: "https://dwhsdoajmvhyezgpeacs.supabase.co";
-	NEXT_PUBLIC_SUPABASE_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR3aHNkb2FqbXZoeWV6Z3BlYWNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjkyNDQ0MzMsImV4cCI6MjA0NDgyMDQzM30.FSXPWiL9B10xpf76_g7jYu2cyD8kJ_JWN3T2Jp9aADY";
+	SUPABASE_URL: string;
+	SUPABASE_KEY: string;
+	NEXT_PUBLIC_SUPABASE_URL: string;
+	NEXT_PUBLIC_SUPABASE_KEY: string;
 	DB: D1Database;
 }
