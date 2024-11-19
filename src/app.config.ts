@@ -1,16 +1,17 @@
 import { Metadata } from "next";
 
 export default {
-    title: "Acme",
-    description: "Describe the app function and usage.",
+    title: "Next CF Starter",
+    description: "Get started with Next.js + Supabase + Cloudflare Pages quickly with this starter template.",
     icons: {
-        icon: "/assets/favicon.ico",
+        icon: "/assets/icon.png",
+        apple: "/assets/icon.png",
     }
 } satisfies Metadata;
 
 export const cssVars = {
     headerPx: 40,
-    marginPx: 8,
+    marginPx: 16,
     navHeaderPx: 44,
     navItemsMarginPx: 16
 } as const;

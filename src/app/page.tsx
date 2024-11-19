@@ -1,32 +1,17 @@
 import MarginedContent from "@/components/ui/margined-content";
-import { getSession } from "@/server/auth";
-import { Metadata, ServerRuntime } from "next";
-import Link from "next/link";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Home"
 };
 
-export const runtime: ServerRuntime = 'edge';
-
-export default async function HomePage() {
-  const { user } = await getSession();
+export default function HomePage() {
 
   return (
     <MarginedContent>
-      <p>Hello, World!</p>
-      <div className="flex gap-x-2">
-
-        {user ? (
-          <Link className="text-blue-600" href={'/profile'}>Profile</Link>
-        ) : (
-          <>
-            <Link className="text-blue-600" href={'/sign-in'}>Sign In</Link>
-            <p>|</p>
-            <Link className="text-blue-600" href={'/sign-up'}>Sign Up</Link>
-          </>
-        )}
-      </div>
+      <section className="w-full h-full flex flex-row gap-x-6 fixed">
+        <p>Hello, World!</p>
+      </section>
     </MarginedContent>
   );
 }

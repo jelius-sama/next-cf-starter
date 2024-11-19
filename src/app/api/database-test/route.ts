@@ -1,8 +1,9 @@
 import { getRequestContext } from "@cloudflare/next-on-pages";
-import { ServerRuntime } from "next";
+import type { ServerRuntime } from "next";
 import { NextResponse } from "next/server";
 
 export const runtime: ServerRuntime = "edge";
+
 
 export async function GET() {
     try {

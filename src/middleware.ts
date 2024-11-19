@@ -1,22 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
-import { updateSession } from "@/server/auth/middleware";
+import { createMiddlewareClient } from "@/server/supabase/middleware-client";
 
 export const runtime = "experimental-edge";
 
 export async function middleware(request: NextRequest): Promise<NextResponse> {
-    const headers = new Headers(request.headers);
-    headers.set("x-origin", request.nextUrl.origin);
+    const { response, supabase } = createMiddlewareClient(request);
+    await supabase.auth.getUser();
 
-    // Check and update session if it exists
-    const sessionResponse = await updateSession(request);
-    if (sessionResponse) {
-        // Merge headers into the session response
-        sessionResponse.headers.set("x-origin", request.nextUrl.origin);
-        return sessionResponse;
-    }
+    const headers = new Map([
+        ["x-current-path", request.nextUrl.pathname],
+        ["x-current-url", request.nextUrl.href],
+        ["x-origin", request.nextUrl.origin],
+    ]);
 
-    // Proceed with request when no session exists
-    return NextResponse.next({ headers });
+    headers.forEach((value, key) => {
+        response.headers.set(key, value);
+    });
+
+    return response;
 }
 
 export const config = {

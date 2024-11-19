@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 import { VariantProps, cva } from 'class-variance-authority';
 import { Loader2 } from 'lucide-react';
 
@@ -38,7 +38,7 @@ interface SpinnerContentProps
 export function Spinner({ size, show, children, className }: SpinnerContentProps) {
   return (
     <span className={spinnerVariants({ show })}>
-      <Loader2 className={cn(loaderVariants({ size }), `text-background ${className}`)} />
+      <Loader2 className={cn(loaderVariants({ size }), `text-foreground ${className}`)} />
       {children}
     </span>
   );

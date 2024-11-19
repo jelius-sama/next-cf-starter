@@ -18,7 +18,7 @@ export function ThemeToggle({ borderRadius = "md" }: { borderRadius?: "sm" | "md
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button className={borderRadius === "sm" ? "rounded-sm  [&_svg]:size-6" : borderRadius === "full" ? "rounded-full  [&_svg]:size-6" : "rounded-md  [&_svg]:size-6"} variant="outline" size="icon">
+                <Button className={borderRadius === "sm" ? "rounded-sm" : borderRadius === "full" ? "rounded-full" : "rounded-md"} variant="outline" size="icon">
                     <Sun className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                     <Moon className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                     <span className="sr-only">Toggle theme</span>

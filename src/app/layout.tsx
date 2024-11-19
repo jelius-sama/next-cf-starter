@@ -4,6 +4,8 @@ import { ContextProviders } from "@/components/context-providers";
 import Sidenav from "@/components/layout/sidenav";
 import { Toaster } from "@/components/ui/sonner";
 import appConfig from "@/app.config";
+import ServerMessage from "@/components/server-message";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: {
@@ -14,11 +16,7 @@ export const metadata: Metadata = {
   icons: appConfig.icons,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
 
   return (
     <html lang="en" suppressHydrationWarning={true}>
@@ -32,6 +30,9 @@ export default function RootLayout({
           <Sidenav />
           {children}
           <Toaster />
+          <Suspense>
+            <ServerMessage />
+          </Suspense>
         </ContextProviders>
       </body>
     </html >

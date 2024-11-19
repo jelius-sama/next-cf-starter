@@ -1,5 +1,5 @@
 import MarginedContent from "@/components/ui/margined-content";
-import { Metadata, ServerRuntime } from "next";
+import type { Metadata, ServerRuntime } from "next";
 import { headers } from "next/headers";
 
 export const runtime: ServerRuntime = "edge";

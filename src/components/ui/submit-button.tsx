@@ -7,22 +7,24 @@ import { Spinner } from "@/components/ui/spinner";
 
 type Props = ComponentProps<typeof Button> & {
     pendingText?: string;
+    loading?: boolean;
 };
 
-export function SubmitButton({ children, pendingText, ...props }: Props) {
+export function SubmitButton({ children, pendingText, variant = "default", loading = false, ...props }: Props) {
     const { pending } = useFormStatus();
 
     return (
         <Button
-            aria-disabled={pending}
-            disabled={pending}
+            aria-disabled={pending || loading}
+            disabled={pending || loading}
             type="submit"
+            variant={variant}
             {...props}
         >
-            {pending && (
-                <Spinner size="small" />
+            {(pending || loading) && (
+                <Spinner className={variant === "default" ? "text-background" : variant === "secondary" ? "text-foreground" : "text-muted-foreground"} size="small" />
             )}
-            {pending && pendingText ? pendingText : children}
+            {(pending || loading) && pendingText ? pendingText : children}
         </Button>
     );
 }
